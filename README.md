@@ -90,6 +90,6 @@ Pull Request で次の2つを送ってください。
 ## ライセンス
 
 - コード（`tools/`）は MIT License です（[LICENSE](LICENSE)）。
-- 課題、課題文、文書、結果（`tasks/`、`prompts/`、`docs/`、`results/`）は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja) です。
+- 課題、課題文、文書、結果（`tasks/`、`prompts/`、`docs/`、`results/`）は [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/deed.ja) です（[LICENSE-CONTENT.md](LICENSE-CONTENT.md)）。
 
 CAD の名前はそれぞれの会社や団体の商標です。
