@@ -1,0 +1,26 @@
+{
+ "task": "T1",
+ "ground": "Base",
+ "joints": [
+  {"id": "J1", "type": "rigid", "a": "JawPlate_1", "b": "Base"},
+  {"id": "J2", "type": "slider", "a": "MovableJaw", "b": "Base", "axis": {"point": [70.0, 0.0, 16.25], "dir": [1.0, 0.0, 0.0]}, "compare": "direction", "positive": "+X の向き（ジョーが開く向き）"},
+  {"id": "J3", "type": "rigid", "a": "JawPlate_2", "b": "MovableJaw"},
+  {"id": "J4", "type": "revolute", "a": "Screw", "b": "MovableJaw", "axis": {"point": [0.0, 0.0, 35.0], "dir": [1.0, 0.0, 0.0]}, "positive": "+X まわりの右ねじの向き"},
+  {"id": "J5", "type": "cylindrical", "a": "Handle", "b": "Screw", "axis": {"point": [218.0, 0.0, 35.0], "dir": [0.0, 1.0, 0.0]}, "positive": "回転は +Y まわりの右ねじの向き、移動は +Y の向き"},
+  {"id": "J6", "type": "rigid", "a": "HandleKnob_1", "b": "Handle"},
+  {"id": "J7", "type": "rigid", "a": "HandleKnob_2", "b": "Handle"}
+ ],
+ "dof": 4,
+ "reuse": [["JawPlate_1", "JawPlate_2"], ["HandleKnob_1", "HandleKnob_2"]],
+ "drive_tests": [
+  {"joint": "J2", "kind": "slide", "value": 10.0, "moving": ["MovableJaw", "JawPlate_2", "Screw", "Handle", "HandleKnob_1", "HandleKnob_2"], "static": ["Base", "JawPlate_1"], "hold": ["J4", "J5"]},
+  {"joint": "J4", "kind": "rotate", "value": 30.0, "moving": ["Screw", "Handle", "HandleKnob_1", "HandleKnob_2"], "static": ["Base", "JawPlate_1", "MovableJaw", "JawPlate_2"], "hold": ["J2", "J5"]},
+  {"joint": "J5", "kind": "rotate", "value": 30.0, "moving": ["Handle", "HandleKnob_1", "HandleKnob_2"], "static": ["Base", "JawPlate_1", "MovableJaw", "JawPlate_2", "Screw"], "hold": ["J2", "J4"]},
+  {"joint": "J5", "kind": "slide", "value": 10.0, "moving": ["Handle", "HandleKnob_1", "HandleKnob_2"], "static": ["Base", "JawPlate_1", "MovableJaw", "JawPlate_2", "Screw"], "hold": ["J2", "J4"]}
+ ],
+ "notes": [
+  "第1回の仕様書（spec.md）から作った、検証のための期待値。エージェントには渡さない。仕様書の本文は、第1回との比較（Q6）のため変えない",
+  "J2 のスライダーは方向だけを比べる（compare: direction）。axis.point は参考の点（案内キーの断面の中心線の上）",
+  "円筒ジョイント J5 は、回転と移動を別々に試す（v1.3 §10 V8）。hold のジョイントは、試験の間、初期姿勢の値のまま保つ"
+ ]
+}

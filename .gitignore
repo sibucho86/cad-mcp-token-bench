@@ -1,0 +1,16 @@
+# 実行の記録（Claude Code の起動の記録や MCP サーバーの出力に、PC のユーザー名を含むパスが入ることがある）
+results/raw/
+
+# 認証や PC ごとの設定を、まちがえて入れないため
+*.token
+auth.json
+.env
+cads/*.local.json
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db

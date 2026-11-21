@@ -1,0 +1,452 @@
+{
+ "task": "T5",
+ "ground": "Frame",
+ "joints": [
+  {
+   "id": "J1",
+   "type": "revolute",
+   "a": "Crankshaft",
+   "b": "Frame",
+   "axis": {
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dir": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "positive": "(0,1,0) まわりの右ねじの向き（正面の −Y 側から見て時計回り）。クランクピンは +X 側から −Z 側へ動く"
+  },
+  {
+   "id": "J2",
+   "type": "revolute",
+   "a": "ConRod",
+   "b": "Crankshaft",
+   "axis": {
+    "point": [
+     28.0,
+     0.0,
+     0.0
+    ],
+    "dir": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "positive": "(0,1,0) まわりの右ねじの向き（正面の −Y 側から見て時計回り）。Crankshaft に対して ConRod が回り、コンロッドの小端が +X 側へ振れる"
+  },
+  {
+   "id": "J3",
+   "type": "rigid",
+   "a": "WristPin",
+   "b": "Piston"
+  },
+  {
+   "id": "J4",
+   "type": "revolute",
+   "a": "ConRod",
+   "b": "WristPin",
+   "axis": {
+    "point": [
+     0.0,
+     0.0,
+     96.0
+    ],
+    "dir": [
+     0.0,
+     1.0,
+     0.0
+    ]
+   },
+   "positive": "(0,1,0) まわりの右ねじの向き（正面の −Y 側から見て時計回り）。WristPin に対して ConRod が回り、コンロッドの大端が −X 側へ振れる（大端→小端の向きは +Z から +X 側へ回る）"
+  },
+  {
+   "id": "J5",
+   "type": "slider",
+   "a": "Piston",
+   "b": "Frame",
+   "axis": {
+    "point": [
+     0.0,
+     0.0,
+     0.0
+    ],
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "compare": "direction",
+   "positive": "+Z の向き（ピストンが上がる向き）"
+  }
+ ],
+ "dof": 1,
+ "rigid_clusters": [
+  [
+   "Frame"
+  ],
+  [
+   "Crankshaft"
+  ],
+  [
+   "ConRod"
+  ],
+  [
+   "Piston",
+   "WristPin"
+  ]
+ ],
+ "reuse": [],
+ "drive_tests": [
+  {
+   "joint": "J1",
+   "kind": "rotate",
+   "value": 30.0,
+   "moving": [
+    "Crankshaft"
+   ],
+   "coupled": [
+    "ConRod",
+    "Piston",
+    "WristPin"
+   ],
+   "static": [
+    "Frame"
+   ],
+   "expect": "loop_checks",
+   "crank_deg": [
+    30.0,
+    -30.0
+   ]
+  },
+  {
+   "joint": "J1",
+   "kind": "rotate",
+   "value": 60.0,
+   "moving": [
+    "Crankshaft"
+   ],
+   "coupled": [
+    "ConRod",
+    "Piston",
+    "WristPin"
+   ],
+   "static": [
+    "Frame"
+   ],
+   "expect": "loop_checks",
+   "crank_deg": [
+    60.0,
+    -60.0
+   ]
+  },
+  {
+   "joint": "J1",
+   "kind": "rotate",
+   "value": 90.0,
+   "moving": [
+    "Crankshaft"
+   ],
+   "coupled": [
+    "ConRod",
+    "Piston",
+    "WristPin"
+   ],
+   "static": [
+    "Frame"
+   ],
+   "expect": "loop_checks",
+   "crank_deg": [
+    90.0,
+    -90.0
+   ]
+  },
+  {
+   "joint": "J1",
+   "kind": "rotate",
+   "value": 150.0,
+   "moving": [
+    "Crankshaft"
+   ],
+   "coupled": [
+    "ConRod",
+    "Piston",
+    "WristPin"
+   ],
+   "static": [
+    "Frame"
+   ],
+   "expect": "loop_checks",
+   "crank_deg": [
+    150.0,
+    -150.0
+   ]
+  }
+ ],
+ "loop_checks": [
+  {
+   "crank_deg": 0.0,
+   "crank_pin_center": [
+    28.0,
+    0.0,
+    0.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    96.0
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    116.0
+   ],
+   "conrod_angle_deg": -16.260205,
+   "joint_deltas": {
+    "J1": 0.0,
+    "J2": 0.0,
+    "J4": 0.0,
+    "J5": 0.0
+   },
+   "wrong_branch_wrist_pin_z": -96.0
+  },
+  {
+   "crank_deg": 30.0,
+   "crank_pin_center": [
+    24.248711,
+    0.0,
+    -14.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    83.015463
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    103.015463
+   ],
+   "conrod_angle_deg": -14.033378,
+   "joint_deltas": {
+    "J1": 30.0,
+    "J2": -27.773174,
+    "J4": 2.226826,
+    "J5": -12.984537
+   },
+   "wrong_branch_wrist_pin_z": -111.015463
+  },
+  {
+   "crank_deg": 60.0,
+   "crank_pin_center": [
+    14.0,
+    0.0,
+    -24.248711
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    74.766439
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    94.766439
+   ],
+   "conrod_angle_deg": -8.047846,
+   "joint_deltas": {
+    "J1": 60.0,
+    "J2": -51.787642,
+    "J4": 8.212358,
+    "J5": -21.233561
+   },
+   "wrong_branch_wrist_pin_z": -123.263862
+  },
+  {
+   "crank_deg": 90.0,
+   "crank_pin_center": [
+    0.0,
+    0.0,
+    -28.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    72.0
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    92.0
+   ],
+   "conrod_angle_deg": 0.0,
+   "joint_deltas": {
+    "J1": 90.0,
+    "J2": -73.739795,
+    "J4": 16.260205,
+    "J5": -24.0
+   },
+   "wrong_branch_wrist_pin_z": -128.0
+  },
+  {
+   "crank_deg": 150.0,
+   "crank_pin_center": [
+    -24.248711,
+    0.0,
+    -14.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    83.015463
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    103.015463
+   ],
+   "conrod_angle_deg": 14.033378,
+   "joint_deltas": {
+    "J1": 150.0,
+    "J2": -119.706417,
+    "J4": 30.293583,
+    "J5": -12.984537
+   },
+   "wrong_branch_wrist_pin_z": -111.015463
+  },
+  {
+   "crank_deg": -30.0,
+   "crank_pin_center": [
+    24.248711,
+    0.0,
+    14.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    111.015463
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    131.015463
+   ],
+   "conrod_angle_deg": -14.033378,
+   "joint_deltas": {
+    "J1": -30.0,
+    "J2": 32.226826,
+    "J4": 2.226826,
+    "J5": 15.015463
+   },
+   "wrong_branch_wrist_pin_z": -83.015463
+  },
+  {
+   "crank_deg": -60.0,
+   "crank_pin_center": [
+    14.0,
+    0.0,
+    24.248711
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    123.263862
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    143.263862
+   ],
+   "conrod_angle_deg": -8.047846,
+   "joint_deltas": {
+    "J1": -60.0,
+    "J2": 68.212358,
+    "J4": 8.212358,
+    "J5": 27.263862
+   },
+   "wrong_branch_wrist_pin_z": -74.766439
+  },
+  {
+   "crank_deg": -90.0,
+   "crank_pin_center": [
+    0.0,
+    0.0,
+    28.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    128.0
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    148.0
+   ],
+   "conrod_angle_deg": 0.0,
+   "joint_deltas": {
+    "J1": -90.0,
+    "J2": 106.260205,
+    "J4": 16.260205,
+    "J5": 32.0
+   },
+   "wrong_branch_wrist_pin_z": -72.0
+  },
+  {
+   "crank_deg": -150.0,
+   "crank_pin_center": [
+    -24.248711,
+    0.0,
+    14.0
+   ],
+   "wrist_pin_center": [
+    0.0,
+    0.0,
+    111.015463
+   ],
+   "piston_position": [
+    0.0,
+    0.0,
+    131.015463
+   ],
+   "conrod_angle_deg": 14.033378,
+   "joint_deltas": {
+    "J1": -150.0,
+    "J2": 180.293583,
+    "J4": 30.293583,
+    "J5": 15.015463
+   },
+   "wrong_branch_wrist_pin_z": -83.015463
+  }
+ ],
+ "loop_definitions": {
+  "crank_deg": "クランク角 θ [deg] = Crankshaft の Frame に対する実際の回転角（J1 の直線 (0,0,0)+(0,1,0) のまわり、J1 の positive = (0,1,0) まわりの右ねじが正）。初期姿勢が 0。CAD のジョイントの値と符号が同じとは限らない",
+  "crank_pin_center": "クランクピンの中心軸と平面 Y=0（コンロッドの厚さの中央）の交点 = (28 cos θ, 0, −28 sin θ)",
+  "wrist_pin_center": "ピストンピンの中心軸と平面 Y=0 の交点（WristPin の重心）= (0, 0, s)。s = −28 sin θ + √(100² − (28 cos θ)²)",
+  "piston_position": "ピストンの基準点 = 頂面（Z=116 の面）の中心。初期姿勢で (0, 0, 116)。(0, 0, s + 20)",
+  "conrod_angle_deg": "コンロッドの中心線（大端→小端）の +Z からの傾き。(0,1,0) まわりの右ねじの角度 = asin(−28 cos θ / 100)。初期姿勢で −16.260205",
+  "joint_deltas": "初期姿勢からの各ジョイントの変化。回転は a の b に対する実際の回転角 [deg]（axis.dir まわりの右ねじが正。360° の差は同じとみなす）、スライダーは a の b に対する実際の移動 [mm]（axis.dir の向きが正）",
+  "wrong_branch_wrist_pin_z": "反対の枝（不合格）でのピストンピンの中心の Z = −28 sin θ − √(100² − (28 cos θ)²)"
+ },
+ "branch": "ピストン（ピストンピンの中心とピストンの基準点）がクランク軸線より上（Z > 0）にある解を正しい枝とする。初期姿勢と同じ側で、s の式の平方根の前が＋の解。ピストンがクランク軸線より下になる反対の枝は不合格",
+ "notes": [
+  "閉ループの機構（自由度 1）。駆動の試験は、計画（v1.3 §10 V8）のとおり J1（クランク）だけを回す。J2・J4・J5 は J1 を回すと一緒に動くので、各角度の loop_checks（位置と joint_deltas）で確かめる。期待値の決め方は、計画 v1.3 §10 V8 の一般の決まり（V6 で記録した向きの対応を使う）と違い、測ったクランク角 θ の符号で loop_checks の項目を選ぶ（下の「回る向きの扱い」）。drive_tests の coupled・expect・crank_deg は、この課題だけのキーで、V8 の実装はこれを読む。この決まりは、事前登録にも書く",
+  "compare が direction のジョイント（J5 のスライダー）は、方向だけを比べる（角度の差 0.5° 以下。向きの符号は問わない）。その axis.point は参考の点（シリンダー軸線の上の原点）で、比べない。仕様書の J5 にも、点は書いていない（方向だけ）。compare のないジョイント（J1・J2・J4 の回転）は、計画 v1.3 §10 V6 のとおり、軸を直線として比べる",
+  "rigid_clusters は、固定のジョイント（J3）でつながった配置のかたまり。V5 は docs/plan.md §3 のとおり、かたまりと、かたまりどうしの可動ジョイント（種類・軸）と、接地を比べる。J1 は [Crankshaft] と [Frame] を、J2 は [ConRod] と [Crankshaft] を、J4 は [ConRod] と [Piston, WristPin] を、J5 は [Piston, WristPin] と [Frame] をつなぐ",
+  "この比べ方では、かたまりと、かたまりどうしの可動ジョイントが同じなら、仕様書と違う付け方も同じ結果になる（例: J4 を ConRod – Piston に付ける。J5 を WristPin – Frame に付ける。J3 の代わりに、Piston と WristPin を1つの剛体グループにする）。仕様書は J1〜J5 の付け方を求めているが、これらは合否では区別できない（合格になる）。この扱いは、事前登録に書く。接地のかたまりは Frame だけなので、接地は配置ごとに比べても、かたまりごとに比べても同じ",
+  "かたまりどうしを、2つの可動ジョイントでつないだもの（例: J4 に加えて、ConRod – Piston の回転を付ける）は、かたまりどうしの可動ジョイントが1つ多いので、余分なジョイントとして V5 で不合格",
+  "moving は、Crankshaft と同じ剛体の動き（J1 の直線のまわりに、測ったクランク角 θ だけ回る）をする配置。coupled は、閉ループで連動して動く配置。static は動かない配置。各 drive_tests の expect と crank_deg は、期待する位置の場所を示す: crank_deg（+value と −value）は、測ったクランク角 θ として認める2つの値。θ と同じ crank_deg の loop_checks の項目が、その試験で期待する位置（クランクピンの中心、ピストンピンの中心、ピストンの位置、joint_deltas）",
+  "回る向きの扱い: 実験の仕組みは、Crankshaft の Frame に対する実際の回転から、符号つきのクランク角 θ を測る（J1 の直線 (0,0,0)+(0,1,0) のまわり、(0,1,0) まわりの右ねじが正）。|θ| が drive_tests の value と一致することを求め、coupled の配置（ConRod・Piston・WristPin）は、crank_deg = θ の loop_checks と比べる。loop_checks には、±30・±60・±90・±150 の両方の符号がある。CAD のジョイントの値の正の向きと、実際に回る向きの対応は、軸の向きだけでは決まらない（ジョイントでつなぐ2つの配置の順番などでも変わる）。値を +value にしてクランクが −value の向きに回っても、合否では向きを問わない。計画 v1.3 §10 V6・V8 は、記録した向きの対応から期待値を決めるが、この課題では、その対応を使わず、測った θ の符号で loop_checks の項目を選ぶ",
+  "回転の joint_deltas は、360° の差を同じとみなして比べる（例: crank_deg = −150 の J2 の 180.293583 は −179.706417 と同じ）",
+  "駆動の手順: 各試験は初期姿勢から始め、J1 を小さな刻み（例えば 5° 以下）で動かすか、CAD のモーション（シミュレーション）の機能で動かす。初期姿勢から一度に大きな角度を与えると、ソルバーが成功と返しても動かなかったり、別の解（クランクが 180° 反転した姿勢など）に移ったりすることがある。判定は、測ったクランク角と位置で行い、ソルバーの成功の報告だけでは合格にしない。試験のあとで、初期姿勢に戻ることも確かめる",
+  "J4 を単独で駆動する試験は置かない。初期姿勢でコンロッドの傾きが最大（dβ/dθ = 0）のため、J4 の値を変えると解が2つ（±θ）に分かれ、試験として定まらない",
+  "空間の機構として数えると（6×3 − 5×4 = −2）、拘束が 3 つ重複する（平面のループのため）。形状は整合しているので、重複を許すソルバーなら解ける",
+  "組めるかの確かめ: 同じ寸法の閉ループは、FreeCAD 1.1（docs/notes/freecad-assembly.md §6.4）と SolidCraft（docs/notes/solidcraft.md §6.2）で組めて、駆動もできた。Fusion の記録はまだない（拘束が重複する閉ループを、Fusion のジョイントで組めて駆動できるかは、まだ分からない）。計画 v1.3 §3.3 のとおり、Phase 1 で、本番の前に、6つの操作経路のすべて（Fusion は MCP と CLI の両方）で、組む・保存・開き直し・J1 を 30/60/90/150° 回して正しい枝のまま動く、を確かめる。どれかの経路でだめなら、T5 を別の課題に差し替える（開ループには書き換えない）"
+ ]
+}

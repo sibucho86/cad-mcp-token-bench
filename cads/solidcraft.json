@@ -1,0 +1,18 @@
+{
+  "id": "solidcraft",
+  "label": "SolidCraft",
+  "cad_name": "SolidCraft",
+  "mcp_server": "solidcraft",
+  "interface_text": "MCP サーバー `solidcraft` のツールを使って SolidCraft（パラメトリック 3D CAD）を操作してください。",
+  "native_desc": "SolidCraft のデザインファイル .solidcraft",
+  "native_ext": ".solidcraft",
+  "step_export": true,
+  "mcp": {
+    "command": "C:/path/to/SolidCraft/solidcraft-cli.exe",
+    "args": ["mcp", "--allow-path", "{work}"]
+  },
+  "versions": {
+    "cad": "SolidCraft 0.21.0",
+    "mcp": "solidcraft-cli の mcp コマンド（同じ版）"
+  }
+}

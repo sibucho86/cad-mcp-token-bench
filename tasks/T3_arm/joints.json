@@ -1,0 +1,276 @@
+{
+ "task": "T3",
+ "ground": "Base",
+ "joints": [
+  {
+   "id": "J1",
+   "type": "revolute",
+   "a": "Turret",
+   "b": "Base",
+   "axis": {
+    "point": [
+     0.0,
+     0.0,
+     20.0
+    ],
+    "dir": [
+     0.0,
+     0.0,
+     1.0
+    ]
+   },
+   "positive": "上から見て反時計回り（(0,0,1) まわりの右ねじの向き）"
+  },
+  {
+   "id": "J2",
+   "type": "revolute",
+   "a": "UpperArm",
+   "b": "Turret",
+   "axis": {
+    "point": [
+     0.0,
+     0.0,
+     80.0
+    ],
+    "dir": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "positive": "腕が上がる向き（(0,−1,0) まわりの右ねじの向き）"
+  },
+  {
+   "id": "J3",
+   "type": "revolute",
+   "a": "Forearm",
+   "b": "UpperArm",
+   "axis": {
+    "point": [
+     106.066017,
+     0.0,
+     186.066017
+    ],
+    "dir": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "positive": "前腕の先が上がる向き（(0,−1,0) まわりの右ねじの向き）"
+  },
+  {
+   "id": "J4",
+   "type": "revolute",
+   "a": "GripperBody",
+   "b": "Forearm",
+   "axis": {
+    "point": [
+     190.918831,
+     0.0,
+     101.213203
+    ],
+    "dir": [
+     0.0,
+     -1.0,
+     0.0
+    ]
+   },
+   "positive": "指の先が +X の側へ振れる向き（(0,−1,0) まわりの右ねじの向き）"
+  },
+  {
+   "id": "J5",
+   "type": "slider",
+   "a": "Finger_1",
+   "b": "GripperBody",
+   "axis": {
+    "point": [
+     210.918831,
+     0.0,
+     60.213203
+    ],
+    "dir": [
+     1.0,
+     0.0,
+     0.0
+    ]
+   },
+   "compare": "direction",
+   "positive": "+X の向き（Finger_1 が開く向き）"
+  },
+  {
+   "id": "J6",
+   "type": "slider",
+   "a": "Finger_2",
+   "b": "GripperBody",
+   "axis": {
+    "point": [
+     170.918831,
+     0.0,
+     60.213203
+    ],
+    "dir": [
+     -1.0,
+     0.0,
+     0.0
+    ]
+   },
+   "compare": "direction",
+   "positive": "−X の向き（Finger_2 が開く向き）"
+  }
+ ],
+ "dof": 6,
+ "reuse": [
+  [
+   "Finger_1",
+   "Finger_2"
+  ]
+ ],
+ "drive_tests": [
+  {
+   "joint": "J1",
+   "kind": "rotate",
+   "value": 30.0,
+   "moving": [
+    "Turret",
+    "UpperArm",
+    "Forearm",
+    "GripperBody",
+    "Finger_1",
+    "Finger_2"
+   ],
+   "static": [
+    "Base"
+   ],
+   "hold": [
+    "J2",
+    "J3",
+    "J4",
+    "J5",
+    "J6"
+   ]
+  },
+  {
+   "joint": "J2",
+   "kind": "rotate",
+   "value": 15.0,
+   "moving": [
+    "UpperArm",
+    "Forearm",
+    "GripperBody",
+    "Finger_1",
+    "Finger_2"
+   ],
+   "static": [
+    "Base",
+    "Turret"
+   ],
+   "hold": [
+    "J1",
+    "J3",
+    "J4",
+    "J5",
+    "J6"
+   ]
+  },
+  {
+   "joint": "J3",
+   "kind": "rotate",
+   "value": 20.0,
+   "moving": [
+    "Forearm",
+    "GripperBody",
+    "Finger_1",
+    "Finger_2"
+   ],
+   "static": [
+    "Base",
+    "Turret",
+    "UpperArm"
+   ],
+   "hold": [
+    "J1",
+    "J2",
+    "J4",
+    "J5",
+    "J6"
+   ]
+  },
+  {
+   "joint": "J4",
+   "kind": "rotate",
+   "value": 30.0,
+   "moving": [
+    "GripperBody",
+    "Finger_1",
+    "Finger_2"
+   ],
+   "static": [
+    "Base",
+    "Turret",
+    "UpperArm",
+    "Forearm"
+   ],
+   "hold": [
+    "J1",
+    "J2",
+    "J3",
+    "J5",
+    "J6"
+   ]
+  },
+  {
+   "joint": "J5",
+   "kind": "slide",
+   "value": 5.0,
+   "moving": [
+    "Finger_1"
+   ],
+   "static": [
+    "Base",
+    "Turret",
+    "UpperArm",
+    "Forearm",
+    "GripperBody",
+    "Finger_2"
+   ],
+   "hold": [
+    "J1",
+    "J2",
+    "J3",
+    "J4",
+    "J6"
+   ]
+  },
+  {
+   "joint": "J6",
+   "kind": "slide",
+   "value": 5.0,
+   "moving": [
+    "Finger_2"
+   ],
+   "static": [
+    "Base",
+    "Turret",
+    "UpperArm",
+    "Forearm",
+    "GripperBody",
+    "Finger_1"
+   ],
+   "hold": [
+    "J1",
+    "J2",
+    "J3",
+    "J4",
+    "J5"
+   ]
+  }
+ ],
+ "notes": [
+  "開いた鎖の機構（自由度 6）。接地の Base を根とする木で、どのジョイントも、ほかのジョイントと連動しない",
+  "compare が direction のジョイント（J5・J6 のスライダー）は、方向だけを比べる（角度の差 0.5° 以下。向きの符号は問わない）。その axis.point は参考の点（案内溝の断面の中心線の上）で、比べない。仕様書にも書いていない。compare のないジョイント（回転）は、計画 v1.3 §10 V6 のとおり、軸を直線として比べる",
+  "drive_tests の moving は、駆動したジョイントの動く側（a）と、その下流の配置。どれも同じ剛体の動きをする（rotate は axis のまわりに value 度。axis.dir まわりの右ねじが正。slide は axis.dir の向きに value mm）。static は動かない配置",
+  "drive_tests の hold は、その試験で値を変えないジョイント（駆動するジョイントのほかの全部）。試験の間、hold のジョイントは初期姿勢の値のまま保つ。hold のジョイントでつながった2つの配置の相対的な変換は、変わってはいけない（例: J1〜J4 の試験で、Finger_1・Finger_2 の GripperBody に対する位置は変わらない）。自由度が 6 あるので、駆動したジョイントのほかのジョイントも、拘束としては自由に動けるため",
+  "ジョイントの値を持たない CAD では、解き直すときに、ソルバーが hold のジョイントも動かすことがある（FreeCAD 1.1 の Assembly の回転・スライダーのジョイントには値がなく、制限 AngleMin/AngleMax・LengthMin/LengthMax だけがある）。そのため検証の仕組みは、駆動の前に hold のジョイントを止める。止め方（例: ロック、制限の最小と最大を初期姿勢の値にする）は、Phase 1 で FreeCAD 1.1・Fusion・SolidCraft のそれぞれで実証してから決め、事前登録に書く"
+ ]
+}

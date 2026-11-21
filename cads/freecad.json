@@ -1,0 +1,18 @@
+{
+  "id": "freecad",
+  "label": "FreeCAD",
+  "cad_name": "FreeCAD 1.1",
+  "mcp_server": "freecad",
+  "interface_note": "FreeCAD は起動済みです。",
+  "native_desc": "FreeCAD ドキュメント .FCStd",
+  "native_ext": ".FCStd",
+  "step_export": true,
+  "mcp": {
+    "command": "C:/path/to/freecad-mcp/.venv/Scripts/freecad-mcp.exe",
+    "args": ["--only-text-feedback", "--host", "127.0.0.1", "--freecadcmd", "C:/path/to/FreeCAD/bin/freecadcmd.exe"]
+  },
+  "versions": {
+    "cad": "FreeCAD 1.1.3",
+    "mcp": "neka-nat/freecad-mcp v0.1.28（コミット 8babe99）"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "id": "mycad",
+  "label": "MyCAD 2026",
+  "cad_name": "MyCAD",
+  "mcp_server": "mycad",
+  "interface_note": "MyCAD は起動済みです。",
+  "native_desc": "MyCAD のアセンブリファイル .myasm",
+  "native_ext": ".myasm",
+  "step_export": true,
+  "mcp": {
+    "command": "C:/path/to/mycad-mcp.exe",
+    "args": ["--allow-path", "{work}"]
+  },
+  "versions": {
+    "cad": "MyCAD 2026.1",
+    "mcp": "mycad-mcp 1.2.3"
+  }
+}

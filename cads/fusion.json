@@ -1,0 +1,18 @@
+{
+  "id": "fusion",
+  "label": "Fusion",
+  "cad_name": "Autodesk Fusion",
+  "mcp_server": "fusion",
+  "interface_note": "Fusion は起動済みで、この作業用の新しいデザインがアクティブになっています。そのデザインの中で作業し、ほかのドキュメントを開いたり閉じたり保存したりしないでください。",
+  "native_desc": "Fusion アーカイブ .f3d",
+  "native_ext": ".f3d",
+  "step_export": true,
+  "mcp": {
+    "type": "http",
+    "url": "http://127.0.0.1:27182/mcp"
+  },
+  "versions": {
+    "cad": "Autodesk Fusion 2706.1.14",
+    "mcp": "Fusion に入っている MCP サーバー（基本設定 > 一般）"
+  }
+}

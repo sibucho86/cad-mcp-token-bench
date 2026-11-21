@@ -1,0 +1,20 @@
+{
+  "id": "zw3d",
+  "label": "ZW3D",
+  "cad_name": "ZW3D",
+  "mcp_server": "zw3d",
+  "interface_note": "ZW3D は起動済みです。",
+  "native_desc": "ZW3D のアセンブリファイル .Z3ASM",
+  "native_ext": ".Z3ASM",
+  "native_desc_part": "ZW3D の部品ファイル .Z3PRT",
+  "native_ext_part": ".Z3PRT",
+  "step_export": false,
+  "mcp": {
+    "command": "C:/ZW3D_MCP/ZW3D_MCP.exe",
+    "args": []
+  },
+  "versions": {
+    "cad": "ZW3D WuKong 2027 18.2",
+    "mcp": "ZW3D_MCP.exe（公式）"
+  }
+}
