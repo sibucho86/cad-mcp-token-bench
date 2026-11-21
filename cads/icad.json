@@ -1,0 +1,18 @@
+{
+  "id": "icad",
+  "label": "iCAD SX",
+  "cad_name": "iCAD SX",
+  "mcp_server": "icad",
+  "interface_note": "iCAD SX は起動済みです。",
+  "native_desc": "iCAD のモデルファイル .icd",
+  "native_ext": ".icd",
+  "step_export": true,
+  "mcp": {
+    "command": "C:/path/to/ICADcli/.venv/Scripts/icadcli.exe",
+    "args": ["mcp-serve"]
+  },
+  "versions": {
+    "cad": "iCAD SX V8L4 (008.004.00100)",
+    "mcp": "ICADcli icadcli mcp-serve（コミット b3032aa、非公開）"
+  }
+}

@@ -1,0 +1,6 @@
+agent,cad,task,total_tokens,api_calls,wall_s,success,judge,model,agent_version,cad_version,mcp_version,date,attempts,note
+claude,icad,T1,48853,4,82.1,yes,manual,claude-opus-5-5,2.1.310,iCAD SX V8L4 (008.004.00100),ICADcli icadcli mcp-serve（コミット b3032aa、非公開）,2026-11-22,3,円筒ジョイント J5 は回転だけ作成（iCAD は1パーツに駆動1つ）。駆動試験 3/4
+claude,icad,T2,86842,6,88.3,yes,manual,claude-opus-5-5,2.1.310,iCAD SX V8L4 (008.004.00100),ICADcli icadcli mcp-serve（コミット b3032aa、非公開）,2026-11-22,2,駆動試験 2/2
+claude,icad,T3,80876,5,107.5,yes,manual,claude-opus-5-5,2.1.310,iCAD SX V8L4 (008.004.00100),ICADcli icadcli mcp-serve（コミット b3032aa、非公開）,2026-11-22,2,駆動試験 6/6
+claude,icad,T4,50818,4,59.7,yes,manual,claude-opus-5-5,2.1.310,iCAD SX V8L4 (008.004.00100),ICADcli icadcli mcp-serve（コミット b3032aa、非公開）,2026-11-22,2,駆動試験 1/1
+claude,icad,T5,112291,7,94.7,yes,manual,claude-opus-5-5,2.1.310,iCAD SX V8L4 (008.004.00100),ICADcli icadcli mcp-serve（コミット b3032aa、非公開）,2026-11-22,2,リンク機構。クランク90度の1角度でピストンピン位置を確認
